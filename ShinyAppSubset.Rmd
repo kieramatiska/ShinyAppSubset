@@ -1,0 +1,120 @@
+---
+title: "Untitled"
+author: "Kiera Matiska"
+date: "1/29/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(janitor)
+```
+
+## Read in data
+
+```{r}
+food_access <- read_csv("food_access_research_atlas.csv") %>% 
+  clean_names()
+```
+
+Create subset with the variable :
+
+- state
+- county
+- urban
+- pop2010
+- ohu2010
+- median_family_income
+- lapop1_10
+- lapop05_10
+- lapop1_20
+- lalowi1_10
+- lalowi05_20
+- lalowi1_20
+- lapophalf
+- lalowihalf
+- lawhitehalf
+- lablackhalf
+- laasianhalf
+- lanhopihalf
+- laaianhalf
+- laomultirhalf
+- lahisphalf
+- lahunvhalf
+- lasnaphalf
+- lapop1
+- lalowi1
+- lawhite1
+- lablack1
+- laasian1
+- lanhopi1
+- laaian1
+- laomultir1
+- lahisp1
+- lahunv1
+- lasnap1
+- lapop10
+- lalowi10
+- lawhite10
+- lablack10
+- laasian10
+- lanhopi10
+- laaian10
+- laomultir10
+- lahisp10
+- lahunv10
+- lasnap10
+- lapop20
+- lalowi20
+- lawhite20
+- lablack20
+- laasian20
+- lanhopi20
+- laaian20
+- laomultir20
+- lahisp20
+- lahunv20
+- lasnap20
+- tract_lowi
+- tract_white
+- tract_black
+- tract_asain
+- tract_nhopi
+- tract_aian
+- tract_o_multir
+- tract_hispanic
+- tract_hunv
+- tract_snap
+
+```{r}
+food_access_subset <- food_access %>% 
+  select(state, county, urban,
+         pop2010, ohu2010, median_family_income, 
+         lapop1_10, lapop05_10, lapop1_20, 
+         lalowi1_10, lalowi05_10, lalowi1_20,
+         lapophalf, lalowihalf, lawhitehalf,
+         lablackhalf, laasianhalf, lanhopihalf,
+         laomultirhalf, lahisphalf, lahunvhalf,
+         lasnaphalf, lapop1, lalowi1,
+         lawhite1, lablack1, laasian1,
+         lanhopi1, laaian1, laomultir1,
+         lahisp1, lapop10, lalowi10,
+         lawhite10, lablack10, laasian10,
+         lanhopi10, laaian10, laomultir10,
+         lahisp10, lahunv10, lasnap10,
+         lapop20, lalowi20, lawhite20,
+         lablack20, laasian20, lanhopi20,
+         laaian20, laomultir20, lahisp20,
+         lahunv20, lasnap20, tract_lowi,
+         tract_white, tract_black, tract_asian,
+         tract_nhopi, tract_aian, tract_o_multir,
+         tract_hispanic, tract_hunv, tract_snap)
+```
+
+## Export data subset as .csv
+
+```{r}
+write_csv(food_access_subset, file = "food_access_subset.csv")
+```
